@@ -10,17 +10,25 @@
 
 Kyanite manages desktops dynamically but does not update KDE’s desktop grid layout. On vertical display setups (or when using a single-column workspace switcher) the grid stays multi-column regardless of how many desktops exist.
 
-The patch adds an `updateRows()` function called whenever a desktop is added or removed, forcing a single-column layout:
+The patch adds an `updateRows()` function behind a `forceVerticalGrid` config flag (default: `false`). When enabled, it forces a single-column layout on every desktop add/remove:
 
 ```js
+const forceVerticalGrid = readConfig("forceVerticalGrid", false);
+
 function updateRows() {
+    if (!forceVerticalGrid) return;
     const count = workspace.desktops.length;
     workspace.desktopGridHeight = count;
     workspace.desktopGridWidth = 1;
 }
 ```
 
-Submitted upstream as [PR #3](https://github.com/MurderFromMars/Kyanite/pull/3).
+Enable it via KWin config:
+```bash
+kwriteconfig6 --file kwinrc --group Script-kyanite --key forceVerticalGrid true
+```
+
+Submitted upstream as [PR #3](https://github.com/MurderFromMars/Kyanite/pull/3) (flag not yet included there — see below for the updated proposal).
 
 ---
 

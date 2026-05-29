@@ -76,7 +76,10 @@ const compat = {
 	desktopAmount: () => workspace.desktops.length,
 };
 
+const forceVerticalGrid = readConfig("forceVerticalGrid", false);
+
 function updateRows() {
+	if (!forceVerticalGrid) return;
 	const count = workspace.desktops.length;
 	workspace.desktopGridHeight = count;
 	workspace.desktopGridWidth = 1;
