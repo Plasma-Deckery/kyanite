@@ -1,3 +1,29 @@
+# Kyanite — Deckery fork
+
+> Fork of [MurderFromMars/Kyanite](https://github.com/MurderFromMars/Kyanite) maintained as part of the [Plasma Deckery](https://github.com/Plasma-Deckery) project.
+>
+> For general documentation see the [upstream README](https://github.com/MurderFromMars/Kyanite#readme).
+
+## What’s different from upstream
+
+**Single-column vertical grid layout** (`updateRows()`):
+
+Kyanite manages desktops dynamically but does not update KDE’s desktop grid layout. On vertical display setups (or when using a single-column workspace switcher) the grid stays multi-column regardless of how many desktops exist.
+
+The patch adds an `updateRows()` function called whenever a desktop is added or removed, forcing a single-column layout:
+
+```js
+function updateRows() {
+    const count = workspace.desktops.length;
+    workspace.desktopGridHeight = count;
+    workspace.desktopGridWidth = 1;
+}
+```
+
+Submitted upstream as [PR #3](https://github.com/MurderFromMars/Kyanite/pull/3).
+
+---
+
 # Kyanite | Smart Dynamic Workspace Management for Plasma 6
 
 A Plasma 6 native KWin script that delivers intelligent, self maintaining virtual desktops. Kyanite creates new desktops when you need them, removes empty ones when you don’t, and keeps your workspace numbering stable and predictable.
