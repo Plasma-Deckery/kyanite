@@ -28,7 +28,7 @@ Enable it via KWin config:
 kwriteconfig6 --file kwinrc --group Script-kyanite --key forceVerticalGrid true
 ```
 
-Submitted upstream as [PR #3](https://github.com/MurderFromMars/Kyanite/pull/3) (flag not yet included there — see below for the updated proposal).
+Submitted upstream as [PR #3](https://github.com/MurderFromMars/Kyanite/pull/3). The flag-based revision has been proposed in a [follow-up comment](https://github.com/MurderFromMars/Kyanite/pull/3#issuecomment-4578483945).
 
 ---
 
