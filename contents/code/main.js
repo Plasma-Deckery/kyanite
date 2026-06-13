@@ -80,7 +80,6 @@ const compat = {
 function updateRows() {
 	const count = workspace.desktops.length;
 	workspace.desktopGridHeight = count;
-	workspace.desktopGridWidth = 1;
 }
 
 
